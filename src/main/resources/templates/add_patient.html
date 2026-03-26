@@ -7,10 +7,31 @@
 </head>
 <body>
     <div class="container">
+<!--        <form th:action="@{/patient/add}"-->
+<!--              th:object="${patient}" method="post">-->
+<!--            <input type="text" th:field="*{name}" class="form-control" placeholder="patient name">-->
+<!--            //birth date-->
+<!--            <input type="date" th:field="*{birth}" class="form-control">-->
+<!--            <input type="submit" class="form-control" value="Save">-->
+<!--            private long ssn;-->
+<!--            private String firstname;-->
+<!--            private String lastname;-->
+<!--            private char gender;-->
+<!--            private LocalDate birth;-->
+
+        <h1>Add Patient</h1>
         <form th:action="@{/patient/add}" th:object="${patient}" method="post">
-            <input type="text" th:field="*{name}" class="form-control" placeholder="patient name">
-            birth date <input type="date" th:field="*{birth}" class="form-control">
+                <input type="text" th:field="*{ssn}" class="form-control" placeholder="Social Security Number">
+                <input type="text" th:field="*{firstname}" class="form-control" placeholder="First Name">
+                <input type="text" th:field="*{lastname}" class="form-control" placeholder="Last Name">
+                <select th:field="*{gender}" class="form-control">
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                    <option value="O">Other</option>
+                </select>
+                <input type="date" th:field="*{birth}" class="form-control">
             <input type="submit" class="form-control" value="Save">
+
         </form>
     </div>
 </body>

@@ -2,6 +2,7 @@ package at.spengergasse.spring_thymeleaf.controllers;
 
 import at.spengergasse.spring_thymeleaf.entities.Patient;
 import at.spengergasse.spring_thymeleaf.entities.PatientRepository;
+import at.spengergasse.spring_thymeleaf.entities.Reservation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,5 +37,12 @@ public class PatientController {
     public String addPatient(@ModelAttribute("patient") Patient patient) {
         patientRepository.save(patient);
         return  "redirect:/patient/list";
+    }
+
+    @GetMapping("/addRev")
+    public String addRev(Model model){
+        model.addAttribute("reservation", new Reservation());
+        return "add_rev";
+
     }
 }

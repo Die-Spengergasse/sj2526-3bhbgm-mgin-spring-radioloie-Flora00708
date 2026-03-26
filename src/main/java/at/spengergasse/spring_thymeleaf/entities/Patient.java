@@ -2,7 +2,9 @@ package at.spengergasse.spring_thymeleaf.entities;
 
 import jakarta.persistence.*;
 
+
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "p_patients")
@@ -16,12 +18,13 @@ public class Patient {
     private String lastname;
     private char gender;
     private LocalDate birth;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 
     public Patient() {
     }
 
-    public Patient(int id, long ssn, String firstname, String lastname, LocalDate birth, char gender) {
-        this.id = id;
+    public Patient(long ssn, String firstname, String lastname, LocalDate birth, char gender) {
         this.ssn = ssn;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -31,10 +34,6 @@ public class Patient {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public long getSsn() {

@@ -2,6 +2,10 @@ package at.spengergasse.spring_thymeleaf.entities;
 
 import jakarta.persistence.*;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "m_machines")
 public class Machine {
@@ -13,22 +17,19 @@ public class Machine {
      private int id;
      private String type;
      private int location;
+     @OneToMany(mappedBy="machine", cascade = CascadeType.ALL)
+     private List<Reservation> reservations;
 
     public Machine() {
     }
 
-    public Machine(int id, String type, int location) {
-        this.id = id;
+    public Machine(String type, int location) {
         this.type = type;
         this.location = location;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getType() {
