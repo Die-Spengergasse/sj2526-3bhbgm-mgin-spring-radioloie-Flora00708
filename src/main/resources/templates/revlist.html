@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation List</title>
+</head>
+<body>
+<div class="container">
+    <h1>List of reservations of each Machine:</h1>
+
+    <table  class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Machine</th>
+            <th>Reservations</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="entry : ${machineReservations}">
+
+            <td th:text="${entry.key.type + ' ' + entry.key.location}"></td>
+
+            <td>
+                <ul>
+                    <li th:each="reservation : ${entry.value}"
+                        th:text="${reservation.patient.firstname
+                                     + ' ' + reservation.patient.lastname
+                                     + ' - ' + reservation.reservationDateTime
+                                     + ' - ' + reservation.bodyRegion
+                                     + ' - ' + reservation.comment}">
+                    </li>
+                </ul>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

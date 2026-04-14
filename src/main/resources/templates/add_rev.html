@@ -3,8 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Reservation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
+    <div class="container">
+<h1>Add Reservation</h1>
+<form th:action="@{/patient/addRev}" th:object="${reservation}" method="post">
+<!--    <select th:field="*{patient}" class="form-control">-->
+
+<!--        <option th:each="patient : ${patients}"-->
+<!--                th:Patient="${patient}"-->
+<!--        > th:text="${patient.firstname} + ' ' + ${patient.lastname}"</option>-->
+
+<!--    </select>-->
+    Patient:
+    <select name = "patientId" class="form-control">
+        <option value="">— bitte wählen —</option>
+        <option th:each="p : ${patients}"
+                th:value="${p.id}"
+                th:text="${p.lastname} + ', ' + ${p.firstname}">
+        </option>
+    </select>
+    Machine:
+    <select name="machineId" class="form-control">
+        <option value="">— bitte wählen —</option>
+        <option th:each="machine : ${machines}"
+                th:value="${machine.id}"
+                th:text="${machine.type} + ' ' + ${machine.location}">
+
+        </option>
+    </select>
+
+    Reservation Time<input type="datetime-local" th:field="*{reservationDateTime}" class="form-control" placeholder="Reservation Time (YYYY-MM-DDTHH:MM)">
+
+    Body Regions<select th:field="*{bodyRegion}" class="form-control">
+        <option value="">— bitte wählen —</option>
+        <option value="HEAD">Head</option>
+        <option value="BACK">Back</option>
+        <option value="BELLY">Belly</option>
+        <option value="ARMS">Arms</option>
+        <option value="LEGS">Legs</option>
+        <option value="FEET">Feet</option>
+        <option value="HANDS">Hands</option>
+        <option value="OTHER">Other</option>
+    </select>
+    <input type="text" th:field="*{comment}" class="form-control" placeholder="Comment">
+    <input type="submit" class="form-control" value="Save">
+</form>
+    </div>
+</container>
 
 </body>
 </html>

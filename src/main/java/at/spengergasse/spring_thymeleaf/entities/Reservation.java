@@ -16,10 +16,10 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
      private int id;
-     @ManyToOne(cascade = CascadeType.ALL)
+     @ManyToOne
      @JoinColumn(name = "patient_id")
      private Patient patient;
-     @ManyToOne(cascade = CascadeType.ALL)
+     @ManyToOne
      @JoinColumn(name = "machine_id")
      private Machine machine;
      private LocalDateTime reservationDateTime;
