@@ -16,6 +16,7 @@
 <!--        > th:text="${patient.firstname} + ' ' + ${patient.lastname}"</option>-->
 
 <!--    </select>-->
+    <p th:if="${error}" th:text="${error}" style="color:red"></p>
     Patient:
     <select name = "patientId" class="form-control">
         <option value="">— bitte wählen —</option>

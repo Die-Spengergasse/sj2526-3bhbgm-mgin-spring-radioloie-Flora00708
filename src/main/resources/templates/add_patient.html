@@ -31,6 +31,7 @@
                 </select>
                 <input type="date" th:field="*{birth}" class="form-control">
             <input type="submit" class="form-control" value="Save">
+            <p th:if="${error}" th:text="${error}" style="color:red"></p>
         </form>
     </div>
 </body>
